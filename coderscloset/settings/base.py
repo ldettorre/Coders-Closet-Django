@@ -11,7 +11,7 @@ SECRET_KEY = 'z9)h7_)&#t-17uql1*1kst%95%9jj5gj7$@15vljg4xq@u2o@@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG")
 
-ALLOWED_HOSTS = ['coderscloset-lucad.c9users.io']
+ALLOWED_HOSTS = ['coderscloset-lucad.c9users.io','coders-closet.herokuapp.com']
 
 
 # Application definition
