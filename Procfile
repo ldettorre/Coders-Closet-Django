@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn mylocal.wsgi:application
+web: gunicorn coderscloset.wsgi:application
