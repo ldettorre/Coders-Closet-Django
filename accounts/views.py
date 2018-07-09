@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate
-from .forms import UserLoginForm, UserRegistrationForm, BuyerRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 
@@ -36,13 +36,9 @@ def register_buyer(request):
     
     if request.method == "POST":
         user_form = UserRegistrationForm(request.POST)
-        buyer_form = BuyerRegistrationForm(request.POST, request.FILES)
         
-        if user_form.is_valid() and buyer_form.is_valid():
+        if user_form.is_valid():
             user = user_form.save()
-            buyer = buyer_form.save(commit=False)
-            buyer.user = user
-            buyer.save()
             
             u = user_form.cleaned_data['username']
             p = user_form.cleaned_data['password1']
@@ -55,9 +51,8 @@ def register_buyer(request):
                 user_form.add_error(None, "Can't log in now, try later.")
     else:
         user_form = UserRegistrationForm()
-        buyer_form = BuyerRegistrationForm()
 
-    return render(request, "accounts/register.html", {'user_form': user_form, 'user_type_form': buyer_form})
+    return render(request, "accounts/register.html", {'user_form': user_form})
  
  
  
