@@ -1,7 +1,12 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
+<h3> Welcome to our Registration page.</h3>
 
-<h2>Register here!</h2>
+    <form method="POST" enctype="multipart/form-data" /> 
+    {% csrf_token %} 
+    {{ user_form.as_p }}
+    {{ user_type_form.as_p }}
+    <input type="submit" value="Submit">
+    </form>
 
 {% endblock content %}
