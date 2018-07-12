@@ -6,6 +6,6 @@ def get_products(request):
     return render(request, 'products/products.html',{'products': products})
     
 def get_mens(request):
-    products = Product.objects.filter(id="MENS_TSHIRTS")
+    products = Product.objects.filter(category="MENS_TSHIRTS")  
     return render(request,"products/products.html",{'products': products})
     

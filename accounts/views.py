@@ -13,7 +13,7 @@ def login(request):
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
         if login_form.is_valid():
-            u = login_form.cleaned_data['username_or_email']
+            u = login_form.cleaned_data['username']
             p = login_form.cleaned_data['password']
             user = authenticate(username=u, password=p)
     
@@ -48,7 +48,7 @@ def register_buyer(request):
                 auth.login(request, user)
                 return redirect("/")
             else:
-                user_form.add_error(None, "Can't log in now, try later.")
+                user_form.add_error(None, "Unfortunately the Login feature is unavailable as this time. Please try again later.")
     else:
         user_form = UserRegistrationForm()
 

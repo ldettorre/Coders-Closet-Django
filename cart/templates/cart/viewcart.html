@@ -1,0 +1,47 @@
+{% extends "base.html" %} 
+{% load static from staticfiles %}
+{% block content %}
+
+
+
+{% if cart_items|length > 0 %}
+
+
+<div="container">
+    <div class="row">
+
+
+        {% for p in cart_items %}
+        <div class="col-md-3">
+            <div class="post-thumb"><img src="{{ MEDIA_URL }}{{p.product.image}}" width="200px" height="200px"></div>
+            <p><span class="boldtext">Name:</span> {{p.product.name}}</p>
+            <p><span class="boldtext">Description:</span> {{p.product.description}}</p>
+            <p><span class="boldtext">Price:</span> {{p.product.price}}</p>
+            <p><span class="boldtext">Brand:</span> {{p.product.brand}}</p>
+            <p><span class="boldtext">Total:</span> {{p.sub_total}}</p>
+            <p><span class="boldtext">Amount in Cart:</span> {{p.quantity}}</p>
+
+            <form method="POST" action="{% url 'delete_item' %}">
+                {% csrf_token %}
+                <input type="hidden" name="product_id" value="{{p.product.id}}" />
+                <input type="submit" value="Delete Item" />
+            </form>
+        </div>
+
+        {% endfor %}
+
+    </div>
+    </div>
+    <h3>Total: {{ total }} </h3>
+    
+    
+               
+<a href="{% url 'checkout' %}" class="btn btn-success" role="button">Go To Check Out</a>
+                
+    {% else %}
+    <h2>Your cart is empty</h2>
+     
+    {% endif %}
+
+    
+    {% endblock content %}
