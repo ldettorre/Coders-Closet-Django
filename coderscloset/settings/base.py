@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'products',
     'cart',
     'checkout',
+    'django_forms_bootstrap',
 ]
 
 MIDDLEWARE = [
@@ -95,3 +96,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
+
+STRIPE_PUBLISHABLE=os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET=os.environ.get('STRIPE_SECRET_KEY')

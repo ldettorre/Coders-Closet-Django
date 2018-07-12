@@ -8,8 +8,8 @@ from django.utils import timezone
 from .models import OrderLineItem
 from django.contrib import messages
 from cart.utils import get_cart_items_and_total
-# from .utils import save_order_items, charge_card, send_confirmation_email
-# import stripe
+from .utils import save_order_items, charge_card, send_confirmation_email
+import stripe
 from django.conf import settings
 
 # Create your views here.
