@@ -41,14 +41,14 @@ def checkout(request):
             if customer.paid:
                 messages.error(request, "You have successfully paid")
                 
-                # Send Email
-                customer_email = request.POST.get("email")
-                full_name = request.POST.get("full_name")
-                send_confirmation_email(customer_email, full_name , items_and_total)
+                # # Send Email
+                # customer_email = request.POST.get("email")
+                # full_name = request.POST.get("full_name")
+                # send_confirmation_email(customer_email, full_name , items_and_total)
         
                 #Clear the Cart
                 del request.session['cart']
-                return redirect("home")
+                return redirect("get_home")
     else:
         order_form = OrderForm()
         payment_form = MakePaymentForm()
