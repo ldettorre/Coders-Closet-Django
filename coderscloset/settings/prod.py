@@ -3,7 +3,7 @@ import dj_database_url
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = os.environ.get("DEBUG", False)
+DEBUG = os.environ.get("DEBUG", True)
 
 DATABASES = {
   'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -24,3 +24,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SYSTEM_EMAIL = 'yourname@example.com'
